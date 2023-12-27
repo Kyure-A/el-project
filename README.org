@@ -1,0 +1,86 @@
+[[https://github.com/Kyure-A/el-project][https://img.shields.io/github/tag/Kyure-A/el-project.svg?style=flat-square]]
+[[file:LICENSE][https://img.shields.io/github/license/Kyure-A/el-project.svg?style=flat-square]]
+[[https://codecov.io/gh/Kyure-A/el-project?branch=master][https://img.shields.io/codecov/c/github/Kyure-A/el-project.svg?style=flat-square]]
+[[https://github.com/Kyure-A/el-project/actions][https://img.shields.io/github/actions/workflow/status/Kyure-A/el-project/test.yml.svg?branch=master&style=flat-square]]
+* el-project: Generate project skelton for Emacs Lisp
+The project is under development and the README may differ from the actual specification (e.g. the README is in ideal form but may contain features that have not yet been implemented).
+
+* Usage
+
+#+begin_src console
+M-x el-project:make-project
+#+end_src
+
+When you enter this, the following text will appear in the echo area, please follow the dialogue.
+
+#+begin_src console
+  [1/8] project-name (Your project name)?:
+#+end_src
+
+#+begin_src console
+  [2/8] github-repo-name (project-name)?: 
+#+end_src
+
+#+begin_src console
+  [3/8] project-short-description (Short description of your project)?: 
+#+end_src
+
+#+begin_src console
+  [4/8] contact (Contact address for example, Email, Twitter, Mastodon)?:
+#+end_src
+
+#+begin_src console
+  [5/8] full-name (Your name)?: 
+#+end_src
+
+#+begin_src console
+  [6/8] github-user-name (github)?: 
+#+end_src
+
+#+begin_src console
+  [7/8] year (2023)?:
+#+end_src
+
+#+begin_src console
+  [8/8] Select keyword?:
+  1 - abbrev
+  2 - bib
+  3 - c
+  4 - calendar
+  5 - comm
+  6 - convenience
+  7 - data
+  8 - docs
+  9 - emulations
+  10 - extensions
+  11 - faces
+  12 - files
+  13 - frames
+  14 - games
+  15 - hardware
+  16 - help
+  17 - hypermedia
+  18 - i18n
+  19 - internal
+  20 - languages
+  21 - lisp
+  22 - local
+  23 - maint
+  24 - mail
+  25 - matching
+  26 - mouse
+  27 - multimedia
+  28 - news
+  29 - outlines
+  30 - processes
+  31 - terminals
+  32 - tex
+  33 - tools
+  34 - unix
+  35 - vc
+  36 - wp
+#+end_src
+
+
+* License
+This package is licensed by The GNU General Public License verson 3 or later. See [[file:LICENSE][LICENSE]].

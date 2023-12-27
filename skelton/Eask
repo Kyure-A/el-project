@@ -1,0 +1,15 @@
+(package "${project-name}"
+         "0.0.0"
+         "${project-short-description}")
+
+(website-url "https://github.com/${github-user-name}/${github-repo-name}")
+(keywords "plugin")
+
+(package-file "${project-name}.el")
+
+(script "test" "echo \"Error: no test specified\" && exit 1")
+
+(source "gnu")
+(source "melpa")
+
+(depends-on "emacs" "24.1")

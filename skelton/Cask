@@ -1,0 +1,6 @@
+(source gnu)
+(source melpa)
+
+(depends-on "ert")
+
+(package-file "${project-name}.el")

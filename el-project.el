@@ -39,43 +39,96 @@
   :prefix "el-project:"
   :link '(url-link "https://github.com/Kyure-A/el-project"))
 
-(defun el-project:make-elisp (project-name
-			      project-short-description
-			      year
-			      full-name
-			      contact
-			      keyword
-			      github-user-name
-			      github-repo-name)
-  ""
-  (let ((format-str (f-read-text "./skelton/.el")))
-    (s-format format-str
-	      'aget
-	      `(("project-name" . ,project-name)
-		("project-short-description" . ,project-short-description)
-		("year" . ,year)
-		("full-name" . ,full-name)
-		("contact" . ,contact)
-		("keyword" . ,keyword)
-		("github-user-name" . ,github-user-name)
-		("github-repo-name" . ,github-repo-name)))
-    (f-append-text "")))
+;; (el-project::get-current-dir :: (function () string))
+(defun el-project::get-current-dir ()
+  "Return current directory."
+  default-directory)
 
-(defun el-project:make-readme (project-name
-			       project-short-description
-			       github-user-name
-			       github-repo-name)
-  ""
-  (let ((format-str (f-read-text "./skelton/README.org")))
-    (s-format format-str
-	      'aget
-	      `(("project-name" . ,project-name)
-		("project-short-description" . ,project-short-description)
-		("github-user-name" . ,github-user-name)
-		("github-repo-name" . ,github-repo-name)))
-    (f-append-text "")))
+;; (el-project::get-el-project-dir :: (function () string))
+(defun el-project::get-el-project-dir ()
+  "Return el-project directory."x
+  (f-dirname (locate-library "el-project")))
 
-(defun el-project:make-project ()
+;; (el-project::get-skelton-dir :: (function () string))
+(defun el-project::get-skelton-dir ()
+  "Return el-project/skelton."
+  (f-join (el-project::get-el-project-dir) "/skelton"))
+
+;; (el-project::get-file-path :: (function (string) string))
+(defun el-project::get-file-path (filename)
+  "Return FILENAMEs path."
+  (f-join (el-project::get-skelton-dir) filename))
+
+;; (el-project::create-file :: (function (string (list (cons string string)))))
+(defun el-project::create-file (skelton value-list)
+  "Create new file from SKELTON and VALUE-LIST."
+  (let ((format-str (f-read-text (el-project::get-file-path skelton))))
+    (s-format format-str
+              'aget
+              value-list)
+    (f-append-text (el-project::get-current-dir))))
+
+;; (el-project::create-el :: (function (string string string string string string string string)))
+(defun el-project::create-el (project-name
+                              project-short-description
+                              year
+                              full-name
+                              contact
+                              keyword
+                              github-user-name
+                              github-repo-name)
+  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, YEAR, FULL-NAME, CONTACT, KEYWORD, GITHUB-USER-NAME, GITHUB-REPO-NAME and creates Emacs Lisp file."
+  (let ((value-list (list
+                     '("project-name" . project-name)
+                     '("project-short-description" . project-short-description)
+                     '("year" . year)
+                     '("full-name" . full-name)
+                     '("contact" . contact)
+                     '("keyword" . keyword)
+                     '("github-user-name" . github-user-name)
+                     '("github-repo-name" . github-repo-name))))
+    (el-project::create-file "${project-name}.el" value-list)))
+
+;; (el-project::create-test-el :: (function (string string string string)))
+(defun el-project::create-test-el (project-name
+                                   year
+                                   full-name
+                                   contact)
+  "Takes PROJECT-NAME, YEAR, FULL-NAME, CONTACT and creates Emacs Lisp file for test."
+  (let ((value-list (list
+                     '("project-name" . project-name)
+                     '("year" . year)
+                     '("full-name" . full-name)
+                     '("contact" . contact))))
+    (el-project::create-file "test/${project-name}-test.el" value-list)))
+
+;; (el-project::create-readme-org :: (function (string string string string)))
+(defun el-project::create-readme-org (project-name
+                                      project-short-description
+                                      github-user-name
+                                      github-repo-name)
+  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and creates README.org."
+  (let ((value-list (list
+                     '("project-name" . project-name)
+                     '("project-short-description" . project-short-description)
+                     '("github-user-name" . github-user-name)
+                     '("github-repo-name" . github-repo-name))))
+    (el-project::create-file "README.org" value-list)))
+
+;; (el-project::create-readme-md :: (function (string string string string)))
+(defun el-project::create-readme-md (project-name
+                                     project-short-description
+                                     github-user-name
+                                     github-repo-name)
+  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and creates README.md."
+  (let ((value-list (list
+                     '("project-name" . project-name)
+                     '("project-short-description" . project-short-description)
+                     '("github-user-name" . github-user-name)
+                     '("github-repo-name" . github-repo-name))))
+    (el-project::create-file "README.md" value-list)))
+
+(defun el-project:create-project ()
   "")
 
 

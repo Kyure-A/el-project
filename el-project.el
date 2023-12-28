@@ -171,6 +171,18 @@
     (let ((create-readme (cdr (assoc chosen choices))))
       (funcall create-readme))))
 
+;;
+(defun el-project::create-pmtools-file (project-name
+                                        project-short-description
+                                        github-user-name
+                                        github-repo-name)
+  "A dialog box for selecting project management tools is displayed in the echo area (take PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME)."
+  (let* ((choices `(("Eask" . (el-project::create-eask-file ,project-name ,project-short-description ,github-user-name ,github-repo-name))
+                    ("Cask" . (el-project::create-cask-file ,project-name))
+                    ("Keg" . (el-project::create-keg-file ,project-name ,github-user-name ,github-repo-name))))
+         (chosen (completing-read "[9/10] Project management tools?: " choices)))
+    (let ((create-pmtools-file (cdr (assoc chosen choices))))
+      (funcall create-pmtools-file))))
 
 (provide 'el-project)
 ;;; el-project.el ends here

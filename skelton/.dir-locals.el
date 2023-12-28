@@ -1,1 +1,1 @@
-((emacs-lisp-mode (package-lint-main-file . "el-project.el")))
+((emacs-lisp-mode (package-lint-main-file . "${project-name}.el")))

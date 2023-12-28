@@ -184,5 +184,14 @@
     (let ((create-pmtools-file (cdr (assoc chosen choices))))
       (funcall create-pmtools-file))))
 
+;;
+(defun el-project::select-keyword ()
+  "A dialog box for selecting keywords is displayed in the echo area."
+  (let* ((choices '("abbrev" "bib" "c" "calendar" "comm" "convenience" "data" "docs" "emulations" "extensions" "faces" "files" "frames" "games" "hardware" "help" "hypermedia" "i18n"
+                    "internal" "languages" "lisp" "local" "maint" "mail" "matching" "mouse" "multimedia" "news" "outlines" "processes" "terminals" "tex" "tools" "unix" "vc" "wp"))
+         (chosen (completing-read "[10/10] Select keyword?: " choices)))
+    chosen))
+
+
 (provide 'el-project)
 ;;; el-project.el ends here

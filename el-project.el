@@ -39,11 +39,17 @@
   :prefix "el-project:"
   :link '(url-link "https://github.com/Kyure-A/el-project"))
 
-(defcustom el-project:default-github-user-name "Your GitHub user name")
+(defcustom el-project:default-github-user-name "Your GitHub user name"
+  "Enter your GitHub user name."
+  :type 'string)
 
-(defcustom el-project:default-full-name "Your name")
+(defcustom el-project:default-full-name "Your name"
+  "Enter your name."
+  :type 'string)
 
-(defcustom el-project:default-contact "Contact address for example, Email, Twitter, Mastodon")
+(defcustom el-project:default-contact "Contact address for example, Email, Twitter, Mastodon"
+  "Enter your contact address for example, Email, Twitter, Mastodon."
+  :type 'string)
 
 ;; (el-project::get-year :: (function () number))
 (defun el-project::get-year ()
@@ -212,7 +218,7 @@
          (project-short-description (read-string "[3/10] project-short-description (Short description of your project)?: "))
          (contact (read-string (format "[4/10] contact (%s)?: " el-project:default-contact)))
          (full-name (read-string (format "[5/10] full-name (%s)?: " el-project:default-full-name)))
-         (github-user-name (read-string (format "[6/10] github-user-name (%s)?: ") el-project:default-github-user-name))
+         (github-user-name (read-string (format "[6/10] github-user-name (%s)?: " el-project:default-github-user-name)))
          (year (read-string (format "[7/10] year (%d)?: " (el-project::get-year)))))
 
     (when (string= "" project-name) (setq project-name "project-name"))

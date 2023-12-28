@@ -192,7 +192,7 @@
                     ("README.md" . (el-project::create-readme-md ,project-name ,project-short-description ,github-user-name ,github-repo-name))))
          (chosen (completing-read "[8/10] Do you use Markdown or Org?: " choices)))
     (let ((create-readme (cdr (assoc chosen choices))))
-      (funcall create-readme))))
+      (eval create-readme))))
 
 ;;
 (defun el-project::create-pmtools-file (project-name
@@ -205,7 +205,7 @@
                     ("Keg" . (el-project::create-keg-file ,project-name ,github-user-name ,github-repo-name))))
          (chosen (completing-read "[9/10] Project management tools?: " choices)))
     (let ((create-pmtools-file (cdr (assoc chosen choices))))
-      (funcall create-pmtools-file))))
+      (eval create-pmtools-file))))
 
 ;;
 (defun el-project::select-keyword ()

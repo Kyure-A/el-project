@@ -69,7 +69,7 @@
 ;; (el-project::get-skelton-dir :: (function () string))
 (defun el-project::get-skelton-dir ()
   "Return el-project/skelton."
-  (f-join (el-project::get-el-project-dir) "/skelton"))
+  (f-join (el-project::get-el-project-dir) "skelton"))
 
 ;; (el-project::get-file-path :: (function (string) string))
 (defun el-project::get-file-path (filename)

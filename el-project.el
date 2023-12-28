@@ -128,6 +128,35 @@
                      '("github-repo-name" . github-repo-name))))
     (el-project::create-file "README.md" value-list)))
 
+;;
+(defun el-project::create-keg-file (project-name
+                                    github-user-name
+                                    github-repo-name)
+  "Takes PROJECT-NAME, GITHUB-USER-NAME, GITHUB-REPO-NAME and create Keg file."
+  (let ((value-list (list
+                     '("project-name" . project-name)
+                     '("github-user-name" . github-user-name)
+                     '("github-repo-name" . github-repo-name))))
+    (el-project::create-file "Keg" value-list)))
+
+(defun el-project::create-eask-file (project-name
+                                     project-short-description
+                                     github-user-name
+                                     github-repo-name)
+  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and create Eask file."
+  (let ((value-list (list
+                     '("project-name" . project-name)
+                     '("project-short-description" . project-short-description)
+                     '("github-user-name" . github-user-name)
+                     '("github-repo-name" . github-repo-name))))
+    (el-project::create-file "Eask" value-list)))
+
+(defun el-project::create-cask-file (project-name)
+  "Takes PROJECT-NAME and create Cask file."
+  (let ((value-list (list
+                     '("project-name" . project-name))))
+    (el-project::create-file "Eask" value-list)))
+
 (defun el-project:create-project ()
   "")
 

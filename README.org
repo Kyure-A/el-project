@@ -56,42 +56,42 @@ When you enter this, the following text will appear in the echo area, please fol
 
 #+begin_src console
   [10/10] Select keyword?:
-  1 - abbrev
-  2 - bib
-  3 - c
-  4 - calendar
-  5 - comm
-  6 - convenience
-  7 - data
-  8 - docs
-  9 - emulations
-  10 - extensions
-  11 - faces
-  12 - files
-  13 - frames
-  14 - games
-  15 - hardware
-  16 - help
-  17 - hypermedia
-  18 - i18n
-  19 - internal
-  20 - languages
-  21 - lisp
-  22 - local
-  23 - maint
-  24 - mail
-  25 - matching
-  26 - mouse
-  27 - multimedia
-  28 - news
-  29 - outlines
-  30 - processes
-  31 - terminals
-  32 - tex
-  33 - tools
-  34 - unix
-  35 - vc
-  36 - wp
+  abbrev
+  bib
+  c
+  calendar
+  comm
+  convenience
+  data
+  docs
+  emulations
+  extensions
+  faces
+  files
+  frames
+  games
+  hardware
+  help
+  hypermedia
+  i18n
+  internal
+  languages
+  lisp
+  local
+  maint
+  mail
+  matching
+  mouse
+  multimedia
+  news
+  outlines
+  processes
+  terminals
+  tex
+  tools
+  unix
+  vc
+  wp
 #+end_src
 
 

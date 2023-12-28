@@ -14,42 +14,48 @@ M-x el-project:make-project
 When you enter this, the following text will appear in the echo area, please follow the dialogue.
 
 #+begin_src console
-  [1/9] project-name (Your project name)?:
+  [1/10] project-name (Your project name)?:
 #+end_src
 
 #+begin_src console
-  [2/9] github-repo-name (project-name)?: 
+  [2/10] github-repo-name (project-name)?: 
 #+end_src
 
 #+begin_src console
-  [3/9] project-short-description (Short description of your project)?: 
+  [3/10] project-short-description (Short description of your project)?: 
 #+end_src
 
 #+begin_src console
-  [4/9] contact (Contact address for example, Email, Twitter, Mastodon)?:
+  [4/10] contact (Contact address for example, Email, Twitter, Mastodon)?:
 #+end_src
 
 #+begin_src console
-  [5/9] full-name (Your name)?: 
+  [5/10] full-name (Your name)?: 
 #+end_src
 
 #+begin_src console
-  [6/9] github-user-name (github)?: 
+  [6/10] github-user-name (github)?: 
 #+end_src
 
 #+begin_src console
-  [7/9] year (2023)?:
+  [7/10] year (2023)?:
 #+end_src
 
 #+begin_src console
-  [8/9] Project management tools ()?:
+  [8/10] Do you use Markdown or Org?:
+  README.org
+  README.md
+#+end_src
+
+#+begin_src console
+  [9/10] Project management tools?:
   Eask
   Cask
   Keg
 #+end_src
 
 #+begin_src console
-  [9/9] Select keyword?:
+  [10/10] Select keyword?:
   1 - abbrev
   2 - bib
   3 - c

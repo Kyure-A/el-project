@@ -77,7 +77,7 @@
                               keyword
                               github-user-name
                               github-repo-name)
-  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, YEAR, FULL-NAME, CONTACT, KEYWORD, GITHUB-USER-NAME, GITHUB-REPO-NAME and creates Emacs Lisp file."
+  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, YEAR, FULL-NAME, CONTACT, KEYWORD, GITHUB-USER-NAME, GITHUB-REPO-NAME and create Emacs Lisp file."
   (let ((value-list (list
                      '("project-name" . project-name)
                      '("project-short-description" . project-short-description)
@@ -94,7 +94,7 @@
                                    year
                                    full-name
                                    contact)
-  "Takes PROJECT-NAME, YEAR, FULL-NAME, CONTACT and creates Emacs Lisp file for test."
+  "Takes PROJECT-NAME, YEAR, FULL-NAME, CONTACT and create Emacs Lisp file for test."
   (let ((value-list (list
                      '("project-name" . project-name)
                      '("year" . year)
@@ -107,7 +107,7 @@
                                       project-short-description
                                       github-user-name
                                       github-repo-name)
-  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and creates README.org."
+  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and create README.org."
   (let ((value-list (list
                      '("project-name" . project-name)
                      '("project-short-description" . project-short-description)
@@ -120,7 +120,7 @@
                                      project-short-description
                                      github-user-name
                                      github-repo-name)
-  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and creates README.md."
+  "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and create README.md."
   (let ((value-list (list
                      '("project-name" . project-name)
                      '("project-short-description" . project-short-description)

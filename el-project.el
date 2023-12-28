@@ -39,6 +39,15 @@
   :prefix "el-project:"
   :link '(url-link "https://github.com/Kyure-A/el-project"))
 
+(defcustom el-project:default-github-user-name "Your GitHub user name")
+
+(defcustom el-project:default-full-name "Your name")
+
+;; (el-project::get-year :: (function () number))
+(defun el-project::get-year ()
+  "Return year."
+  (nth 5 (decode-time (current-time))))
+
 ;; (el-project::get-current-dir :: (function () string))
 (defun el-project::get-current-dir ()
   "Return current directory."
@@ -192,6 +201,20 @@
          (chosen (completing-read "[10/10] Select keyword?: " choices)))
     chosen))
 
+;;
+(defun el-project:create-project ()
+  ""
+  (interactive)
+  (let* ((project-name (read-string "[1/10] project-name (Your project name)?: "))
+         (github-repo-name (read-string "[2/10] github-repo-name (project-name)?: "))
+         (project-short-description (read-string "[3/10] project-short-description (Short description of your project)?: "))
+         (contact (read-string "[4/10] contact (Contact address for example, Email, Twitter, Mastodon)?: "))
+         (full-name (read-string "[5/10] full-name (Your name)?: "))
+         (github-user-name (read-string "[6/10] github-user-name (github)?: "))
+         (year (read-string "[7/10] year (2023)?: ")))
+    (el-project::create-readme project-name project-short-description github-user-name github-repo-name)
+    (el-project::create-pmtools-file project-name project-short-description github-user-name github-repo-name)
+    (el-project::select-keyword)))
 
 (provide 'el-project)
 ;;; el-project.el ends here

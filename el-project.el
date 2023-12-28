@@ -180,7 +180,29 @@
                      `("project-name" . ,project-name)
                      `("github-user-name" . ,github-user-name)
                      `("github-repo-name" . ,github-repo-name))))
-    (el-project::create-file "Keg" value-list)))
+    (el-project::create-file project-name "Keg" value-list)))
+
+;;
+(defun el-project::create-codecov-yml (project-name)
+  "Create codecov.yml."
+  (el-project::create-file project-name "codecov.yml" nil))
+
+;;
+(defun el-project::create-license (project-name)
+  "Create LICENSE."
+  (el-project::create-file project-name "LICENSE" nil))
+
+;;
+(defun el-project::create-gitignore (project-name)
+  "Create .gitignore."
+  (el-project::create-file project-name ".gitignore" nil))
+
+;;
+(defun el-project::create-dir-locals-el (project-name)
+  "Takes PROJECT-NAME and Create .dir-locals.el."
+  (let ((value-list (list
+                     `("project-name" . ,project-name))))
+    (el-project::create-file project-name ".dir-locals.el" value-list)))
 
 ;;
 (defun el-project::create-readme (project-name
@@ -237,7 +259,13 @@
     
     (el-project::create-readme project-name project-short-description github-user-name github-repo-name)
     (el-project::create-pmtools-file project-name project-short-description github-user-name github-repo-name)
-    (el-project::select-keyword)))
+    (el-project::create-test-el project-name year full-name contact)
+    (el-project::create-codecov-yml project-name)
+    (el-project::create-license project-name)
+    (el-project::create-dir-locals-el project-name)
+    (el-project::create-gitignore project-name)
+    (let ((keyword (el-project::select-keyword)))
+      (el-project::create-el project-name project-short-description year full-name contact keyword github-user-name github-repo-name))))
 
 (provide 'el-project)
 ;;; el-project.el ends here

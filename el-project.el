@@ -77,13 +77,18 @@
   (f-join (el-project::get-skelton-dir) filename))
 
 ;; (el-project::create-file :: (function (string (list (cons string string)))))
-(defun el-project::create-file (skelton value-list)
-  "Create new file from SKELTON and VALUE-LIST."
+(defun el-project::create-file (project-name skelton value-list)
+  "Create new file from PROJECT-NAME, SKELTON and VALUE-LIST."
   (let ((format-str (f-read-text (el-project::get-file-path skelton))))
-    (s-format format-str
-              'aget
-              value-list)
-    (f-append-text (el-project::get-current-dir))))
+    (f-mkdir-full-path (f-join (el-project::get-current-dir) project-name))
+    (f-append-text (s-format format-str
+                             'aget
+                             value-list)
+                   'utf-8
+                   (f-join (el-project::get-current-dir) project-name
+                           (s-format skelton
+                                     'aget
+                                     value-list)))))
 
 ;; (el-project::create-el :: (function (string string string string string string string string)))
 (defun el-project::create-el (project-name
@@ -104,7 +109,7 @@
                      `("keyword" . ,keyword)
                      `("github-user-name" . ,github-user-name)
                      `("github-repo-name" . ,github-repo-name))))
-    (el-project::create-file "${project-name}.el" value-list)))
+    (el-project::create-file project-name "${project-name}.el" value-list)))
 
 ;; (el-project::create-test-el :: (function (string string string string)))
 (defun el-project::create-test-el (project-name
@@ -117,7 +122,8 @@
                      `("year" . ,year)
                      `("full-name" . ,full-name)
                      `("contact" . ,contact))))
-    (el-project::create-file "test/${project-name}-test.el" value-list)))
+    (f-mkdir-full-path (f-join (el-project::get-current-dir) project-name "test"))
+    (el-project::create-file project-name "test/${project-name}-test.el" value-list)))
 
 ;; (el-project::create-readme-org :: (function (string string string string)))
 (defun el-project::create-readme-org (project-name
@@ -130,7 +136,7 @@
                      `("project-short-description" . ,project-short-description)
                      `("github-user-name" . ,github-user-name)
                      `("github-repo-name" . ,github-repo-name))))
-    (el-project::create-file "README.org" value-list)))
+    (el-project::create-file project-name "README.org" value-list)))
 
 ;; (el-project::create-readme-md :: (function (string string string string)))
 (defun el-project::create-readme-md (project-name
@@ -143,7 +149,7 @@
                      `("project-short-description" . ,project-short-description)
                      `("github-user-name" . ,github-user-name)
                      `("github-repo-name" . ,github-repo-name))))
-    (el-project::create-file "README.md" value-list)))
+    (el-project::create-file project-name "README.md" value-list)))
 
 ;;
 (defun el-project::create-eask-file (project-name
@@ -156,14 +162,14 @@
                      `("project-short-description" . ,project-short-description)
                      `("github-user-name" . ,github-user-name)
                      `("github-repo-name" . ,github-repo-name))))
-    (el-project::create-file "Eask" value-list)))
+    (el-project::create-file project-name "Eask" value-list)))
 
 ;;
 (defun el-project::create-cask-file (project-name)
   "Takes PROJECT-NAME and create Cask file."
   (let ((value-list (list
                      `("project-name" . ,project-name))))
-    (el-project::create-file "Eask" value-list)))
+    (el-project::create-file project-name "Cask" value-list)))
 
 ;;
 (defun el-project::create-keg-file (project-name

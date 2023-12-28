@@ -46,7 +46,7 @@
 
 ;; (el-project::get-el-project-dir :: (function () string))
 (defun el-project::get-el-project-dir ()
-  "Return el-project directory."x
+  "Return el-project directory."
   (f-dirname (locate-library "el-project")))
 
 ;; (el-project::get-skelton-dir :: (function () string))
@@ -79,14 +79,14 @@
                               github-repo-name)
   "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, YEAR, FULL-NAME, CONTACT, KEYWORD, GITHUB-USER-NAME, GITHUB-REPO-NAME and create Emacs Lisp file."
   (let ((value-list (list
-                     '("project-name" . project-name)
-                     '("project-short-description" . project-short-description)
-                     '("year" . year)
-                     '("full-name" . full-name)
-                     '("contact" . contact)
-                     '("keyword" . keyword)
-                     '("github-user-name" . github-user-name)
-                     '("github-repo-name" . github-repo-name))))
+                     `("project-name" . ,project-name)
+                     `("project-short-description" . ,project-short-description)
+                     `("year" . ,year)
+                     `("full-name" . ,full-name)
+                     `("contact" . ,contact)
+                     `("keyword" . ,keyword)
+                     `("github-user-name" . ,github-user-name)
+                     `("github-repo-name" . ,github-repo-name))))
     (el-project::create-file "${project-name}.el" value-list)))
 
 ;; (el-project::create-test-el :: (function (string string string string)))
@@ -96,10 +96,10 @@
                                    contact)
   "Takes PROJECT-NAME, YEAR, FULL-NAME, CONTACT and create Emacs Lisp file for test."
   (let ((value-list (list
-                     '("project-name" . project-name)
-                     '("year" . year)
-                     '("full-name" . full-name)
-                     '("contact" . contact))))
+                     `("project-name" . ,project-name)
+                     `("year" . ,year)
+                     `("full-name" . ,full-name)
+                     `("contact" . ,contact))))
     (el-project::create-file "test/${project-name}-test.el" value-list)))
 
 ;; (el-project::create-readme-org :: (function (string string string string)))
@@ -109,10 +109,10 @@
                                       github-repo-name)
   "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and create README.org."
   (let ((value-list (list
-                     '("project-name" . project-name)
-                     '("project-short-description" . project-short-description)
-                     '("github-user-name" . github-user-name)
-                     '("github-repo-name" . github-repo-name))))
+                     `("project-name" . ,project-name)
+                     `("project-short-description" . ,project-short-description)
+                     `("github-user-name" . ,github-user-name)
+                     `("github-repo-name" . ,github-repo-name))))
     (el-project::create-file "README.org" value-list)))
 
 ;; (el-project::create-readme-md :: (function (string string string string)))
@@ -122,34 +122,11 @@
                                      github-repo-name)
   "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and create README.md."
   (let ((value-list (list
-                     '("project-name" . project-name)
-                     '("project-short-description" . project-short-description)
-                     '("github-user-name" . github-user-name)
-                     '("github-repo-name" . github-repo-name))))
+                     `("project-name" . ,project-name)
+                     `("project-short-description" . ,project-short-description)
+                     `("github-user-name" . ,github-user-name)
+                     `("github-repo-name" . ,github-repo-name))))
     (el-project::create-file "README.md" value-list)))
-
-;;
-(defun el-project::create-readme (project-name
-                                  project-short-description
-                                  github-user-name
-                                  github-repo-name)
-  ""
-  (let* ((choices '(("README.org" . (el-project::create-readme-org ,project-name ,project-short-description ,github-user-name ,github-repo-name))
-                    ("README.md" . (el-project::create-readme-md ,project-name ,project-short-description ,github-user-name ,github-repo-name))))
-         (chosen (completing-read "[8/10] Do you use Markdown or Org?: " choices)))
-    (let ((create-readme (cdr (assoc chosen choices))))
-      (funcall create-readme))))
-
-;;
-(defun el-project::create-keg-file (project-name
-                                    github-user-name
-                                    github-repo-name)
-  "Takes PROJECT-NAME, GITHUB-USER-NAME, GITHUB-REPO-NAME and create Keg file."
-  (let ((value-list (list
-                     '("project-name" . project-name)
-                     '("github-user-name" . github-user-name)
-                     '("github-repo-name" . github-repo-name))))
-    (el-project::create-file "Keg" value-list)))
 
 ;;
 (defun el-project::create-eask-file (project-name
@@ -158,22 +135,41 @@
                                      github-repo-name)
   "Takes PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME and create Eask file."
   (let ((value-list (list
-                     '("project-name" . project-name)
-                     '("project-short-description" . project-short-description)
-                     '("github-user-name" . github-user-name)
-                     '("github-repo-name" . github-repo-name))))
+                     `("project-name" . ,project-name)
+                     `("project-short-description" . ,project-short-description)
+                     `("github-user-name" . ,github-user-name)
+                     `("github-repo-name" . ,github-repo-name))))
     (el-project::create-file "Eask" value-list)))
 
 ;;
 (defun el-project::create-cask-file (project-name)
   "Takes PROJECT-NAME and create Cask file."
   (let ((value-list (list
-                     '("project-name" . project-name))))
+                     `("project-name" . ,project-name))))
     (el-project::create-file "Eask" value-list)))
 
 ;;
-(defun el-project:create-project ()
-  "")
+(defun el-project::create-keg-file (project-name
+                                    github-user-name
+                                    github-repo-name)
+  "Takes PROJECT-NAME, GITHUB-USER-NAME, GITHUB-REPO-NAME and create Keg file."
+  (let ((value-list (list
+                     `("project-name" . ,project-name)
+                     `("github-user-name" . ,github-user-name)
+                     `("github-repo-name" . ,github-repo-name))))
+    (el-project::create-file "Keg" value-list)))
+
+;;
+(defun el-project::create-readme (project-name
+                                  project-short-description
+                                  github-user-name
+                                  github-repo-name)
+  "A dialog box for selecting README.org or README.md is displayed in the echo area (take PROJECT-NAME, PROJECT-SHORT-DESCRIPTION, GITHUB-USER-NAME, GITHUB-REPO-NAME)."
+  (let* ((choices `(("README.org" . (el-project::create-readme-org ,project-name ,project-short-description ,github-user-name ,github-repo-name))
+                    ("README.md" . (el-project::create-readme-md ,project-name ,project-short-description ,github-user-name ,github-repo-name))))
+         (chosen (completing-read "[8/10] Do you use Markdown or Org?: " choices)))
+    (let ((create-readme (cdr (assoc chosen choices))))
+      (funcall create-readme))))
 
 
 (provide 'el-project)

@@ -1,6 +1,6 @@
 [[file:LICENSE][https://img.shields.io/github/license/Kyure-A/el-project.svg?style=flat-square]]
 * el-project: Generate project skelton for Emacs Lisp
-The project is under development and the README may differ from the actual specification (e.g. the README is in ideal form but may contain features that have not yet been implemented).
+This project is inspired by [[https://github.com/fukamachi/cl-project][fukamachi/cl-project]].
 
 * Usage
 

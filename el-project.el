@@ -5,7 +5,7 @@
 ;; Author: Kyure_A <twitter.com/kyureq>
 ;; Keywords: tools
 
-;; Version: 0.0.0
+;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.1"))
 ;; URL: https://github.com/Kyure-A/el-project
 

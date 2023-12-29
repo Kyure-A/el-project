@@ -76,19 +76,26 @@
   "Return FILENAMEs path."
   (f-join (el-project::get-skelton-dir) filename))
 
-;; (el-project::create-file :: (function (string (list (cons string string)))))
+;; (el-project::create-file :: (function (string string (list (cons string string))) (string)))
 (defun el-project::create-file (project-name skelton value-list)
   "Create new file from PROJECT-NAME, SKELTON and VALUE-LIST."
-  (let ((format-str (f-read-text (el-project::get-file-path skelton))))
-    (f-mkdir-full-path (f-join (el-project::get-current-dir) project-name))
-    (f-append-text (s-format format-str
-                             'aget
-                             value-list)
-                   'utf-8
-                   (f-join (el-project::get-current-dir) project-name
-                           (s-format skelton
-                                     'aget
-                                     value-list)))))
+  (let* ((format-str (f-read-text (el-project::get-file-path skelton)))
+         (dir-path (f-join (el-project::get-current-dir) project-name))
+         (path (f-join dir-path (s-format skelton
+                                          'aget
+                                          value-list))))
+    
+    (unless (f-exists-p dir-path)
+      (f-mkdir-full-path dir-path))
+    
+    (if (not (f-exists-p path))
+        (progn
+          (f-append-text (s-format format-str
+                                   'aget
+                                   value-list)
+                         'utf-8 path)
+          path)
+      nil)))
 
 ;; (el-project::create-el :: (function (string string string string string string string string)))
 (defun el-project::create-el (project-name
@@ -121,8 +128,10 @@
                      `("project-name" . ,project-name)
                      `("year" . ,year)
                      `("full-name" . ,full-name)
-                     `("contact" . ,contact))))
-    (f-mkdir-full-path (f-join (el-project::get-current-dir) project-name "test"))
+                     `("contact" . ,contact)))
+        (test-path (f-join (el-project::get-current-dir) project-name "test")))
+    (unless (f-exists-p test-path)
+      (f-mkdir-full-path test-path))
     (el-project::create-file project-name "test/${project-name}-test.el" value-list)))
 
 ;; (el-project::create-readme-org :: (function (string string string string)))

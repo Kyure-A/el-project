@@ -2,95 +2,25 @@
 * el-project: Generate project skelton for Emacs Lisp
 This project is inspired by [[https://github.com/fukamachi/cl-project][fukamachi/cl-project]].
 
-* Usage
+** Usage
 
 #+begin_src console
 M-x el-project:make-project
 #+end_src
+When this command is executed, questions about the project are displayed interactively in the echo area. Simply follow this and enter the project information to complete the project template.
 
-When you enter this, the following text will appear in the echo area, please follow the dialogue.
+** Features
+- Flexible templates
+  el-project uses parameter embedding with [[https://github.com/magnars/s.el][s.el]]. Therefore, the output can be flexibly varied simply by changing the skelton (see "[[file:skelton/][cl-project/skelton]]"). 
 
-#+begin_src console
-  [1/10] project-name (Your project name)?:
-#+end_src
+- Multiple choices of package development tools.
+  - [[https://github.com/emacs-eask/cli][Eask]]
+  - [[https://github.com/cask/cask][Cask]]
+  - [[https://github.com/conao3/keg.el][Keg]]
 
-#+begin_src console
-  [2/10] github-repo-name (project-name)?: 
-#+end_src
-
-#+begin_src console
-  [3/10] project-short-description (Short description of your project)?: 
-#+end_src
-
-#+begin_src console
-  [4/10] contact (Contact address for example, Email, Twitter, Mastodon)?:
-#+end_src
-
-#+begin_src console
-  [5/10] full-name (Your name)?: 
-#+end_src
-
-#+begin_src console
-  [6/10] github-user-name (github)?: 
-#+end_src
-
-#+begin_src console
-  [7/10] year (2023)?:
-#+end_src
-
-#+begin_src console
-  [8/10] Do you use Markdown or Org?:
-  README.org
-  README.md
-#+end_src
-
-#+begin_src console
-  [9/10] Project management tools?:
-  Eask
-  Cask
-  Keg
-#+end_src
-
-#+begin_src console
-  [10/10] Select keyword?:
-  abbrev
-  bib
-  c
-  calendar
-  comm
-  convenience
-  data
-  docs
-  emulations
-  extensions
-  faces
-  files
-  frames
-  games
-  hardware
-  help
-  hypermedia
-  i18n
-  internal
-  languages
-  lisp
-  local
-  maint
-  mail
-  matching
-  mouse
-  multimedia
-  news
-  outlines
-  processes
-  terminals
-  tex
-  tools
-  unix
-  vc
-  wp
-#+end_src
-
+- Multiple choices of README formats
+  - README.org
+  - README.md
 
 * License
 This package is licensed by The GNU General Public License verson 3 or later. See [[file:LICENSE][LICENSE]].

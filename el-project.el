@@ -237,25 +237,17 @@
          (chosen (completing-read "[10/10] Select keyword?: " choices)))
     chosen))
 
-;;
+;; (el-project:create-project :: (function () ()))
 (defun el-project:create-project ()
-  ""
+  "Receive information about the project interactively from the echo area and create a template for the project."
   (interactive)
-  (let* ((project-name (read-string "[1/10] project-name (Your project name)?: "))
-         (github-repo-name (read-string (format "[2/10] github-repo-name (%s)?: " project-name)))
-         (project-short-description (read-string "[3/10] project-short-description (Short description of your project)?: "))
-         (contact (read-string (format "[4/10] contact (%s)?: " el-project:default-contact)))
-         (full-name (read-string (format "[5/10] full-name (%s)?: " el-project:default-full-name)))
-         (github-user-name (read-string (format "[6/10] github-user-name (%s)?: " el-project:default-github-user-name)))
-         (year (read-string (format "[7/10] year (%d)?: " (el-project::get-year)))))
-
-    (when (string= "" project-name) (setq project-name "project-name"))
-    (when (string= "" github-repo-name) (setq github-repo-name project-name))
-    (when (string= "" project-short-description) (setq project-short-description "Short description of your project"))
-    (when (string= "" contact) (setq contact el-project:default-contact))
-    (when (string= "" full-name) (setq full-name el-project:default-full-name))
-    (when (string= "" github-user-name) (setq github-user-name el-project:default-github-user-name))
-    (when (string= "" year) (setq year (format "%d" (el-project::get-year))))
+  (let* ((project-name (read-string "[1/10] project-name (Your project name)?: " nil nil "project-name"))
+         (github-repo-name (read-string (format "[2/10] github-repo-name (%s)?: " project-name) nil nil project-name))
+         (project-short-description (read-string "[3/10] project-short-description (Short description of your project)?: " nil nil "Short description of your project"))
+         (contact (read-string (format "[4/10] contact (%s)?: " el-project:default-contact) nil nil el-project:default-contact))
+         (full-name (read-string (format "[5/10] full-name (%s)?: " el-project:default-full-name) nil nil el-project:default-full-name))
+         (github-user-name (read-string (format "[6/10] github-user-name (%s)?: " el-project:default-github-user-name) nil nil el-project:default-github-user-name))
+         (year (read-string (format "[7/10] year (%d)?: " (el-project::get-year)) nil nil (el-project::get-year))))
     
     (el-project::create-readme project-name project-short-description github-user-name github-repo-name)
     (el-project::create-pmtools-file project-name project-short-description github-user-name github-repo-name)

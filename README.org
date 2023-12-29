@@ -11,6 +11,7 @@ When this command is executed, questions about the project are displayed interac
 
 ** Features
 - Flexible templates
+
   el-project uses parameter embedding with [[https://github.com/magnars/s.el][s.el]]. Therefore, the output can be flexibly varied simply by changing the skelton (see "[[file:skelton/][cl-project/skelton]]"). 
 
 - Multiple choices of package development tools.

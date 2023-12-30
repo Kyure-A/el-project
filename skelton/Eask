@@ -13,3 +13,7 @@
 (source "melpa")
 
 (depends-on "emacs" "24.1")
+
+(development
+ (depends-on "elsa")
+ (depends-on "elisp-lint"))

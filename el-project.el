@@ -6,7 +6,7 @@
 ;; Keywords: tools
 
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "24.1"))
+;; Package-Requires: ((emacs "24.1") (f "0.20.0") (s "1.13.1"))
 ;; URL: https://github.com/Kyure-A/el-project
 
 ;; SPDX-License-Identifier:  GPL-3.0-or-later

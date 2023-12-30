@@ -246,8 +246,8 @@
          (chosen (completing-read "[10/10] Select keyword?: " choices)))
     chosen))
 
-;; (el-project:create-project :: (function () ()))
-(defun el-project:create-project ()
+;; (el-project:make-project :: (function () ()))
+(defun el-project:make-project ()
   "Receive information about the project interactively from the echo area and create a template for the project."
   (interactive)
   (let* ((project-name (read-string "[1/10] project-name (Your project name)?: " nil nil "project-name"))

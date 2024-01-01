@@ -81,19 +81,14 @@
   "Create new file from PROJECT-NAME, SKELTON and VALUE-LIST."
   (let* ((format-str (f-read-text (el-project::get-file-path skelton)))
          (dir-path (f-join (el-project::get-current-dir) project-name))
-         (path (f-join dir-path (s-format skelton
-                                          'aget
-                                          value-list))))
+         (path (f-join dir-path (s-format skelton 'aget value-list))))
     
     (unless (f-exists-p dir-path)
       (f-mkdir-full-path dir-path))
     
     (if (not (f-exists-p path))
         (progn
-          (f-append-text (s-format format-str
-                                   'aget
-                                   value-list)
-                         'utf-8 path)
+          (f-append-text (s-format format-str 'aget value-list) 'utf-8 path)
           path)
       nil)))
 

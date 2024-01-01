@@ -2,6 +2,14 @@
 * el-project: Generate project skelton for Emacs Lisp
 This project is inspired by [[https://github.com/fukamachi/cl-project][fukamachi/cl-project]].
 
+** Installations
+Push the following list to package-archives and install from package.el.
+#+begin_src emacs-lisp
+  ("kelpa" . "https://kelpa.kyre.moe/")
+#+end_src
+
+Alternatively, downloaders such as el-get, straight.el can be used.
+
 ** Usage
 
 #+begin_src console
@@ -23,5 +31,5 @@ When this command is executed, questions about the project are displayed interac
   - README.org
   - README.md
 
-* License
+** License
 This package is licensed by The GNU General Public License verson 3 or later. See [[file:LICENSE][LICENSE]].

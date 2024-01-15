@@ -5,7 +5,7 @@
 ;; Author: Kyure_A <twitter.com/kyureq>
 ;; Keywords: tools
 
-;; Version: 1.0.0
+;; Version: 1.1.0
 ;; Package-Requires: ((emacs "24.1") (f "0.20.0") (s "1.13.1"))
 ;; URL: https://github.com/Kyure-A/el-project
 
@@ -51,6 +51,10 @@
   "Enter your contact address for example, Email, Twitter, Mastodon."
   :type 'string)
 
+(defcustom el-project:default-skelton-dir (el-project::get-skelton-dir)
+  "This variable that sets the skelton directory location."
+  :type 'string)
+
 ;; (el-project::get-year :: (function () number))
 (defun el-project::get-year ()
   "Return year."
@@ -74,7 +78,7 @@
 ;; (el-project::get-file-path :: (function (string) string))
 (defun el-project::get-file-path (filename)
   "Return FILENAMEs path."
-  (f-join (el-project::get-skelton-dir) filename))
+  (f-join el-project:default-skelton-dir filename))
 
 ;; (el-project::create-file :: (function (string string (list (cons string string))) (string)))
 (defun el-project::create-file (project-name skelton value-list)

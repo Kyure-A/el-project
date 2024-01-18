@@ -1,6 +1,6 @@
 ;;; el-project.el --- Generate project skelton for Emacs Lisp  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2023  Kyure_A
+;; Copyright (C) 2023 Kyure_A
 
 ;; Author: Kyure_A <twitter.com/kyureq>
 ;; Keywords: tools
@@ -9,7 +9,7 @@
 ;; Package-Requires: ((emacs "24.1") (f "0.20.0") (s "1.13.1"))
 ;; URL: https://github.com/Kyure-A/el-project
 
-;; SPDX-License-Identifier:  GPL-3.0-or-later
+;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by

@@ -17,6 +17,8 @@ M-x el-project:make-project
 #+end_src
 When this command is executed, questions about the project are displayed interactively in the echo area. Simply follow this and enter the project information to complete the project template.
 
+You can also change the skeleton reference to your customized skeleton by changing ~el-project:default-skeleton-dir~.
+
 ** Features
 - Flexible templates
 

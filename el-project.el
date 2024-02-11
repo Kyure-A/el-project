@@ -51,10 +51,6 @@
   "Enter your contact address for example, Email, Twitter, Mastodon."
   :type 'string)
 
-(defcustom el-project:default-skeleton-dir (el-project::get-skeleton-dir)
-  "This variable that sets the skeleton directory location."
-  :type 'string)
-
 ;; (el-project::get-year :: (function () number))
 (defun el-project::get-year ()
   "Return year."
@@ -74,6 +70,10 @@
 (defun el-project::get-skeleton-dir ()
   "Return el-project/skeleton."
   (f-join (el-project::get-el-project-dir) "skeleton"))
+
+(defcustom el-project:default-skeleton-dir (el-project::get-skeleton-dir)
+  "This variable that sets the skeleton directory location."
+  :type 'string)
 
 ;; (el-project::get-file-path :: (function (string) string))
 (defun el-project::get-file-path (filename)

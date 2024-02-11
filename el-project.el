@@ -1,4 +1,4 @@
-;;; el-project.el --- Generate project skelton for Emacs Lisp  -*- lexical-binding: t; -*-
+;;; el-project.el --- Generate project skeleton for Emacs Lisp  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2023 Kyure_A
 
@@ -26,7 +26,7 @@
 
 ;;; Commentary:
 
-;; Generate project skelton for Emacs Lisp
+;; Generate project skeleton for Emacs Lisp
 
 ;;; Code:
 
@@ -34,7 +34,7 @@
 (require 's)
 
 (defgroup el-project ()
-  "Generate project skelton for Emacs Lisp."
+  "Generate project skeleton for Emacs Lisp."
   :group 'tools
   :prefix "el-project:"
   :link '(url-link "https://github.com/Kyure-A/el-project"))
@@ -51,8 +51,8 @@
   "Enter your contact address for example, Email, Twitter, Mastodon."
   :type 'string)
 
-(defcustom el-project:default-skelton-dir (el-project::get-skelton-dir)
-  "This variable that sets the skelton directory location."
+(defcustom el-project:default-skeleton-dir (el-project::get-skeleton-dir)
+  "This variable that sets the skeleton directory location."
   :type 'string)
 
 ;; (el-project::get-year :: (function () number))
@@ -70,22 +70,22 @@
   "Return el-project directory."
   (f-dirname (locate-library "el-project")))
 
-;; (el-project::get-skelton-dir :: (function () string))
-(defun el-project::get-skelton-dir ()
-  "Return el-project/skelton."
-  (f-join (el-project::get-el-project-dir) "skelton"))
+;; (el-project::get-skeleton-dir :: (function () string))
+(defun el-project::get-skeleton-dir ()
+  "Return el-project/skeleton."
+  (f-join (el-project::get-el-project-dir) "skeleton"))
 
 ;; (el-project::get-file-path :: (function (string) string))
 (defun el-project::get-file-path (filename)
   "Return FILENAMEs path."
-  (f-join el-project:default-skelton-dir filename))
+  (f-join el-project:default-skeleton-dir filename))
 
 ;; (el-project::create-file :: (function (string string (list (cons string string))) (string)))
-(defun el-project::create-file (project-name skelton value-list)
-  "Create new file from PROJECT-NAME, SKELTON and VALUE-LIST."
-  (let* ((format-str (f-read-text (el-project::get-file-path skelton)))
+(defun el-project::create-file (project-name skeleton value-list)
+  "Create new file from PROJECT-NAME, SKELETON and VALUE-LIST."
+  (let* ((format-str (f-read-text (el-project::get-file-path skeleton)))
          (dir-path (f-join (el-project::get-current-dir) project-name))
-         (path (f-join dir-path (s-format skelton 'aget value-list))))
+         (path (f-join dir-path (s-format skeleton 'aget value-list))))
     
     (unless (f-exists-p dir-path)
       (f-mkdir-full-path dir-path))

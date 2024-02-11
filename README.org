@@ -1,5 +1,5 @@
 [[file:LICENSE][https://img.shields.io/github/license/Kyure-A/el-project.svg?style=flat-square]]
-* el-project: Generate project skelton for Emacs Lisp
+* el-project: Generate project skeleton for Emacs Lisp
 This project is inspired by [[https://github.com/fukamachi/cl-project][fukamachi/cl-project]].
 
 ** Installations
@@ -20,7 +20,7 @@ When this command is executed, questions about the project are displayed interac
 ** Features
 - Flexible templates
 
-  el-project uses parameter embedding with [[https://github.com/magnars/s.el][s.el]]. Therefore, the output can be flexibly varied simply by changing the skelton (see "[[file:skelton/][cl-project/skelton]]"). 
+  el-project uses parameter embedding with [[https://github.com/magnars/s.el][s.el]]. Therefore, the output can be flexibly varied simply by changing the skeleton (see "[[file:skeleton/][cl-project/skeleton]]"). 
 
 - Multiple choices of package development tools.
   - [[https://github.com/emacs-eask/cli][Eask]]

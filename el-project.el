@@ -39,18 +39,6 @@
   :prefix "el-project:"
   :link '(url-link "https://github.com/Kyure-A/el-project"))
 
-(defcustom el-project:default-github-user-name "Your GitHub user name"
-  "Enter your GitHub user name."
-  :type 'string)
-
-(defcustom el-project:default-full-name "Your name"
-  "Enter your name."
-  :type 'string)
-
-(defcustom el-project:default-contact "Contact address for example, Email, Twitter, Mastodon"
-  "Enter your contact address for example, Email, Twitter, Mastodon."
-  :type 'string)
-
 ;; (el-project::get-year :: (function () number))
 (defun el-project::get-year ()
   "Return year."
@@ -71,14 +59,32 @@
   "Return el-project/skeleton."
   (f-join (el-project::get-el-project-dir) "skeleton"))
 
-(defcustom el-project:default-skeleton-dir (el-project::get-skeleton-dir)
-  "This variable that sets the skeleton directory location."
-  :type 'string)
-
 ;; (el-project::get-file-path :: (function (string) string))
 (defun el-project::get-file-path (filename)
   "Return FILENAMEs path."
   (f-join el-project:default-skeleton-dir filename))
+
+(defcustom el-project:default-skeleton-dir (el-project::get-skeleton-dir)
+  "This variable that sets the skeleton directory location."
+  :type 'string)
+
+(defcustom el-project:default-github-user-name "Your GitHub user name"
+  "Enter your GitHub user name."
+  :type 'string)
+
+(defcustom el-project:default-full-name "Your name"
+  "Enter your name."
+  :type 'string)
+
+(defcustom el-project:default-contact "Contact address for example, Email, Twitter, Mastodon"
+  "Enter your contact address for example, Email, Twitter, Mastodon."
+  :type 'string)
+
+(defcustom el-project:skeleton-files '("${project-name}.el" "Cask" "codecov.yml" ".dir-locals.el"
+                                       "Eask" ".gitignore" "Keg" "LICENSE" "README.md" "README.org"
+                                       "test/${project-name}-test.el")
+  ""
+  :type '(repeat string))
 
 ;; (el-project::create-file :: (function (string string (list (cons string string))) (string)))
 (defun el-project::create-file (project-name skeleton value-list)

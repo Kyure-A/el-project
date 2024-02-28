@@ -120,8 +120,8 @@
         result
       "README.org")))
 
-;; (el-project--select-pmtools-file :: (function () string))
-(defun el-project--select-pmtools-file ()
+;; (el-project--select-project-management-tools-file :: (function () string))
+(defun el-project--select-project-management-tools-file ()
   "A dialog box for selecting project management tools is displayed in the echo area."
   (let* ((choices '("Eask" "Cask" "Keg"))
          (chosen (completing-read "[9/10] Project management tools (Eask)?: " choices)))
@@ -171,9 +171,9 @@
          (github-user-name (read-string (format "[6/10] github-user-name (%s)?: " el-project-default-github-user-name) nil nil el-project-default-github-user-name))
          (year (read-string (format "[7/10] year (%d)?: " (el-project--get-year)) nil nil (el-project--get-year)))
          (readme (el-project--select-readme))
-         (pmtools (el-project--select-pmtools-file))
+         (project-management-tools (el-project--select-project-management-tools-file))
          (keyword (el-project--select-keyword))
-         (skeleton-files (append el-project-skeleton-files (list readme pmtools)))
+         (skeleton-files (append el-project-skeleton-files (list readme project-management-tools)))
          (value-list (el-project--make-value-list project-name project-short-description year full-name contact keyword github-user-name github-repo-name)))
     (el-project--create-files project-name skeleton-files value-list)))
 

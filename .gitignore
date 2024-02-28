@@ -1,2 +1,4 @@
 flycheck_*
 *.elc
+.eask
+.elsa

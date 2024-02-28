@@ -22,7 +22,7 @@ You can also change the skeleton reference to your customized skeleton by changi
 ** Features
 - Flexible templates
 
-  el-project uses parameter embedding with [[https://github.com/magnars/s.el][s.el]]. Therefore, the output can be flexibly varied simply by changing the skeleton (see "[[file:skeleton/][cl-project/skeleton]]"). 
+  el-project uses parameter embedding with [[https://github.com/magnars/s.el][s.el]]. Therefore, the output can be flexibly varied simply by changing the skeleton (see "[[file:skeleton/][el-project/skeleton]]").
 
 - Multiple choices of package development tools.
   - [[https://github.com/emacs-eask/cli][Eask]]

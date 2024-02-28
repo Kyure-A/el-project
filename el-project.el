@@ -116,26 +116,48 @@
                     ("Markdown" . "README.md")))
          (chosen (completing-read "[8/10] Do you use Markdown or Org?: " choices))
          (result (cdr (assoc chosen choices))))
-    (if (eq result nil)
-        (el-project::select-readme)
-      result)))
+    (if result
+        result
+      "README.org")))
 
 ;; (el-project::select-pmtools-file :: (function () string))
 (defun el-project::select-pmtools-file ()
   "A dialog box for selecting project management tools is displayed in the echo area."
   (let* ((choices '("Eask" "Cask" "Keg"))
-         (chosen (completing-read "[9/10] Project management tools?: " choices)))
-    chosen))
+         (chosen (completing-read "[9/10] Project management tools (Eask)?: " choices)))
+    (if (member chosen choices)
+        chosen
+      "Eask")))
 
 ;; (el-project::select-keyword :: (function () string))
 (defun el-project::select-keyword ()
   "A dialog box for selecting keywords is displayed in the echo area."
   (let* ((choices '("abbrev" "bib" "c" "calendar" "comm" "convenience" "data" "docs" "emulations" "extensions" "faces" "files" "frames" "games" "hardware" "help" "hypermedia" "i18n"
                     "internal" "languages" "lisp" "local" "maint" "mail" "matching" "mouse" "multimedia" "news" "outlines" "processes" "terminals" "tex" "tools" "unix" "vc" "wp"))
-         (chosen (completing-read "[10/10] Select keyword?: " choices)))
+         (chosen (completing-read "[10/10] Select keyword (tools)?: " choices)))
     (if (member chosen choices)
         chosen
-      (el-project::select-keyword))))
+      "tools")))
+
+;; (el-project::make-value-list :: (function (string string string string string string string string) (list (cons string string))))
+(defun el-project::make-value-list (project-name
+                                    project-short-description
+                                    year
+                                    full-name
+                                    contact
+                                    keyword
+                                    github-user-name
+                                    github-repo-name)
+  "aa"
+  (list
+   `("project-name" . ,project-name)
+   `("project-short-description" . ,project-short-description)
+   `("year" . ,year)
+   `("full-name" . ,full-name)
+   `("contact" . ,contact)
+   `("keyword" . ,keyword)
+   `("github-user-name" . ,github-user-name)
+   `("github-repo-name" . ,github-repo-name)))
 
 ;; (el-project:make-project :: (function () ()))
 (defun el-project:make-project ()
@@ -152,15 +174,7 @@
          (pmtools (el-project::select-pmtools-file))
          (keyword (el-project::select-keyword))
          (skeleton-files (append el-project:skeleton-files (list readme pmtools)))
-         (value-list (list
-                     `("project-name" . ,project-name)
-                     `("project-short-description" . ,project-short-description)
-                     `("year" . ,year)
-                     `("full-name" . ,full-name)
-                     `("contact" . ,contact)
-                     `("keyword" . ,keyword)
-                     `("github-user-name" . ,github-user-name)
-                     `("github-repo-name" . ,github-repo-name))))
+         (value-list (el-project::make-value-list project-name project-short-description year full-name contact keyword github-user-name github-repo-name)))
     (el-project::create-files project-name skeleton-files value-list)))
 
 (provide 'el-project)

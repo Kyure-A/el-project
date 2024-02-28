@@ -81,7 +81,7 @@
   :type 'string)
 
 (defcustom el-project-skeleton-files '("${project-name}.el" "codecov.yml" ".dir-locals.el" ".gitignore" "LICENSE" "test/${project-name}-test.el")
-  ""
+  "Enter the file to be placed directly under the skeleton and used."
   :type '(repeat string))
 
 ;; (el-project--create-file :: (function (string string (list (cons string string))) string))
@@ -106,7 +106,7 @@
 
 ;; (el-project--create-files :: (function (string (list string) (list (cons string string))) string))
 (defun el-project--create-files (project-name skeletons value-list)
-  ""
+  "Create new files from PROJECT-NAME, SKELETONS and VALUE-LIST."
   (mapcar #'(lambda (skeleton) (el-project--create-file project-name skeleton value-list)) skeletons))
 
 ;; (el-project--select-readme :: (function () string))
@@ -141,23 +141,23 @@
 
 ;; (el-project--make-value-list :: (function (string string string string string string string string) (list (cons string string))))
 (defun el-project--make-value-list (project-name
-                                    project-short-description
+                                    proj-desc
                                     year
                                     full-name
                                     contact
                                     keyword
-                                    github-user-name
-                                    github-repo-name)
-  "aa"
+                                    gh-user-name
+                                    gh-repo-name)
+  "Recieves PROJECT-NAME, PROJ-DESC, YEAR, FULL-NAME, CONTACT, KEYWORD, GH-USER-NAME, GH-REPO-NAME and then return value list."
   (list
    `("project-name" . ,project-name)
-   `("project-short-description" . ,project-short-description)
+   `("project-short-description" . ,proj-desc)
    `("year" . ,year)
    `("full-name" . ,full-name)
    `("contact" . ,contact)
    `("keyword" . ,keyword)
-   `("github-user-name" . ,github-user-name)
-   `("github-repo-name" . ,github-repo-name)))
+   `("github-user-name" . ,gh-user-name)
+   `("github-repo-name" . ,gh-repo-name)))
 
 ;; (el-project-make-project :: (function () ()))
 (defun el-project-make-project ()

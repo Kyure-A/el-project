@@ -84,6 +84,10 @@
   "Enter the file to be placed directly under the skeleton and used."
   :type '(repeat string))
 
+(defvar el-project--keywords
+  '("abbrev" "bib" "c" "calendar" "comm" "convenience" "data" "docs" "emulations" "extensions" "faces" "files" "frames" "games" "hardware" "help" "hypermedia" "i18n"
+    "internal" "languages" "lisp" "local" "maint" "mail" "matching" "mouse" "multimedia" "news" "outlines" "processes" "terminals" "tex" "tools" "unix" "vc" "wp"))
+
 ;; (el-project--create-file :: (function (string string (list (cons string string))) string))
 (defun el-project--create-file (project-name skeleton value-list)
   "Create new file from PROJECT-NAME, SKELETON and VALUE-LIST."
@@ -132,8 +136,7 @@
 ;; (el-project--select-keyword :: (function () string))
 (defun el-project--select-keyword ()
   "A dialog box for selecting keywords is displayed in the echo area."
-  (let* ((choices '("abbrev" "bib" "c" "calendar" "comm" "convenience" "data" "docs" "emulations" "extensions" "faces" "files" "frames" "games" "hardware" "help" "hypermedia" "i18n"
-                    "internal" "languages" "lisp" "local" "maint" "mail" "matching" "mouse" "multimedia" "news" "outlines" "processes" "terminals" "tex" "tools" "unix" "vc" "wp"))
+  (let* ((choices el-project--keywords)
          (chosen (completing-read "[10/10] Select keyword (tools)?: " choices)))
     (if (member chosen choices)
         chosen
